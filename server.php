@@ -6,6 +6,16 @@ $last_name = $_GET['last_name'];
 $age = $_GET['age'];
 $comment = $_GET['comment'];
 
+//salvo in una variabile la lunghezza del commento
+$comment_length = strlen($comment);
+
+//salvo in un'altra variabile il commento dell'utente censurato
+//str_replace(porzioneDaModificare, conCosa, stringa) --> per inserire più termini da sostituire, nel primo parametro metto un array con all'interno tutti gli elementi da sostituire
+//$count serve a contare il numero di sostituzione effettuate
+$comment_censored = str_replace(['merda','odio'], '***', $comment, $count);
+
+//salvo in una variabile la lunghezza del commento censurato
+$comment_censored_lenght = strlen($comment_censored)
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +28,38 @@ $comment = $_GET['comment'];
 <body>
     <main>
         <h1>Ciao <?php echo $name; ?> <?php echo $last_name; ?>, alla prossima!</h1>
-        <p><?php echo $comment ?></p>
+        <p>Paragrafo og: 
+            <span><?php echo $comment ?></span>
+        </p>
+        <p>lunghezza paragrafo og: 
+            <span class="blue"><?php echo $comment_length ?></span>
+        </p>
+        <p>paragrafo modificato: 
+            <span><?php echo $comment_censored ?></span>
+        </p>
+        <p>lunghezza paragrafo modificato: 
+            <span class="blue"><?php echo $comment_censored_lenght ?></span>
+        </p>
+        <p>n di parole sostituite: 
+            <span class="red"><?php echo $count ?></span></p>
     </main>
 </body>
 </html>
+
+
+<style>
+    p {
+        font-weight: bold
+    }
+    p span{
+        font-weight: normal
+    }
+
+    .blue{
+        color: blue
+    }
+
+    .red{
+        color: red
+    }
+</style>
