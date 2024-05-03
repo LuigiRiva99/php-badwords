@@ -1,7 +1,7 @@
 <?php
 // var_dump($_GET);
 
-$name = $_GET['name'];
+$research = $_GET['research'];
 $last_name = $_GET['last_name'];
 $age = $_GET['age'];
 $comment = $_GET['comment'];
@@ -12,7 +12,16 @@ $comment_length = strlen($comment);
 //salvo in un'altra variabile il commento dell'utente censurato
 //str_replace(porzioneDaModificare, conCosa, stringa) --> per inserire più termini da sostituire, nel primo parametro metto un array con all'interno tutti gli elementi da sostituire
 //$count serve a contare il numero di sostituzione effettuate
-$comment_censored = str_replace(['merda','odio'], '***', $comment, $count);
+
+//uso str_contains per vedere se l'input scritto dall'utente è presente nel paragrafo (textarea)
+$inside_comment = str_contains($comment,$research);
+
+// uso un if che mi modifica il paragrafo 
+if ($inside_comment){
+    $comment_censored = str_replace($research, '***', $comment, $count);
+};
+
+// var_dump($inside_comment);
 
 //salvo in una variabile la lunghezza del commento censurato
 $comment_censored_lenght = strlen($comment_censored)
@@ -27,7 +36,7 @@ $comment_censored_lenght = strlen($comment_censored)
 </head>
 <body>
     <main>
-        <h1>Ciao <?php echo $name; ?> <?php echo $last_name; ?>, alla prossima!</h1>
+        <!-- <h1>Ciao <?php echo $name; ?> <?php echo $last_name; ?>, alla prossima!</h1> -->
         <p>Paragrafo og: 
             <span><?php echo $comment ?></span>
         </p>

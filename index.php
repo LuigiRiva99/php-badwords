@@ -8,7 +8,7 @@
 <body>
     <main>
         <form action="./server.php">
-            <p>
+            <!-- <p>
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" placehodler="inserisci il tuo nome">
             </p>
@@ -19,6 +19,10 @@
             <p>
                 <label for="last_name">Cognome</label>
                 <input type="text" id="last_name" name="last_name" placehodler="inserisci il tuo cognome">
+            </p> -->
+            <p>
+                <label for="research">Ricerca</label>
+                <input type="text" id="research" name="research" placehodler="inserisci la parola">
             </p>
             <p class="comment">
                 <label for="comment">Commento</label>
